@@ -6,6 +6,7 @@
   text-align: center; /* Ensures text is centered */
   min-height: 100vh; /* Makes sure it's fully centered */
   gap: 35px;
+  margin-bottom: -40px;
 }
 
 .hero img {
@@ -89,7 +90,7 @@
     height: auto;
     margin-top: 10px;
     display: block;
-    margin-left: 25px;
+    margin-left: 75px;
     margin-right: auto;
   }
 

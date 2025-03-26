@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     gap: 60px;
-    margin: 80px 10%;
+    margin: 40px 10%;
 }
 
 /* About Title */
@@ -161,11 +161,13 @@
     .about-left img {
         width: 80%;
         max-width: 250px;
+        /* display: none; */
     }
 
     .about-para {
         font-size: 18px;
         line-height: 1.6;
+        /* letter-spacing: 1px; */
         /* text-align: center; */
     }
 

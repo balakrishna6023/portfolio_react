@@ -105,9 +105,13 @@
   .services {
     gap: 50px;
     margin: 50px 30px;
+    align-items: center;
+    text-align: center;
   }
 
   .services-title h1 {
+    margin-left: 40px;
+    text-align: center;
     font-size: 40px;
   }
 

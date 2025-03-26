@@ -1,72 +1,71 @@
-import React from 'react'
-import './contact.css'
-import theme_pattern from '../../assets/theme_pattern.svg'
-import mail_icon from '../../assets/mail_icon.svg'
-import location_icon from '../../assets/location_icon.svg'
-import call_icon from '../../assets/call_icon.svg'
+import React from "react";
+import emailjs from "@emailjs/browser";
+import "./contact.css";
+import theme_pattern from "../../assets/theme_pattern.svg";
+import mail_icon from "../../assets/mail_icon.svg";
+import location_icon from "../../assets/location_icon.svg";
+import call_icon from "../../assets/call_icon.svg";
+
 const Contact = () => {
-
-  const onSubmit = async (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
-
-    formData.append("access_key", "546f03fc-2afe-49a4-9b39-86a74d62699b");
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
+    
+    emailjs.sendForm(
+      "service_jtxko7a",   // Replace with your EmailJS Service ID
+      "template_yyfqlkk",  // Replace with your EmailJS Template ID
+      event.target,
+      "ff4F9P0A_Zg8Eyn2d"    // Replace with your EmailJS Public Key
+    ).then(
+      (response) => {
+        alert("Email sent successfully!");
       },
-      body: json
-    }).then((res) => res.json());
+      (error) => {
+        alert("Failed to send email.");
+      }
+    );
 
-    if (res.success) {
-      alert(res.message);
-    }
-  }
-
+    event.target.reset(); // Clear the form after submission
+  };
 
   return (
-    <div className='contact' id='contact'>
+    <div className="contact" id="contact">
       <div className="contact-title">
         <h1>Get In Touch</h1>
         <img src={theme_pattern} alt="" />
       </div>
       <div className="contact-section">
         <div className="contact-left">
-            <h1>Let's Talk</h1>
-            <p>I'm currently available to take on new projects, so feel free to send me a message about anything that you want to me work on. You can contact me anytime.</p>
-            <div className="contact-details">
-                <div className="contact-detail">
-                   <img src={mail_icon} alt="" />
-                   <p>balakrishnalingala94@gmail.com</p>
-                </div>
-                <div className="contact-detail">
-                    <img src={call_icon} alt="" />
-                    <p>+91 9390824604</p>
-                </div>
-                <div className="contact-detail">
-                    <img src={location_icon} alt="" />
-                    <p>Andhrapradesh,India</p>
-                </div>
+          <h1>Let's Talk</h1>
+          <p>
+            I'm currently available to take on new projects, so feel free to send me a message.
+          </p>
+          <div className="contact-details">
+            <div className="contact-detail">
+              <img src={mail_icon} alt="" />
+              <p>balakrishnalingala94@gmail.com</p>
             </div>
+            <div className="contact-detail">
+              <img src={call_icon} alt="" />
+              <p>+91 9390824604</p>
+            </div>
+            <div className="contact-detail">
+              <img src={location_icon} alt="" />
+              <p>Andhra Pradesh, India</p>
+            </div>
+          </div>
         </div>
-        <form  className="contact-right" onSubmit={onSubmit}>
-            <label htmlFor="">Your name</label>
-            <input type="text" placeholder='Enter your name' name='name'/>
-            <label htmlFor="email">Your email</label>
-            <input type="email" placeholder='enter your email' name='email' />
-            <label htmlFor="">write your message here</label>
-            <textarea name="message" rows="8" placeholder='enter your message' ></textarea>
-            <button className="contact-submit" type='submit'>Submit Now</button>
+        <form className="contact-right" onSubmit={onSubmit}>
+          <label>Your Name</label>
+          <input type="text" name="name" placeholder="Enter your name" required />
+          <label>Your Email</label>
+          <input type="email" name="email" placeholder="Enter your email" required />
+          <label>Write your message here</label>
+          <textarea name="message" rows="8" placeholder="Enter your message" required></textarea>
+          <button className="contact-submit" type="submit">Submit Now</button>
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;
