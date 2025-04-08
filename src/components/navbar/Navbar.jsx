@@ -29,7 +29,7 @@ const Navbar = () => {
         {/* Mobile menu close button */}
         <img src={menu_close} onClick={toggleMenu} alt="Close Menu" className="nav-mob-close" />
         
-        {["home", "about", "services", "portfolio", "contact"].map((item, index) => (
+        {["home", "about", "services", "Projects", "contact"].map((item, index) => (
           <li key={index}>
             <AnchorLink className='nachor-link' href={`#${item}`}>
               <p onClick={() => setMenu(item)}>{item.charAt(0).toUpperCase() + item.slice(1)}</p>
